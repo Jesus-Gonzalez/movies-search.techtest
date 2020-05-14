@@ -6,7 +6,7 @@ import LoadingPage from '../app/pages/loading/LoadingPage';
 const HomePage = React.lazy(() => import('../app/pages/home/HomePage'));
 const DetailPage = React.lazy(() => import('../app/pages/detail/DetailPage'));
 
-export default function Routing () {
+export const Routing = () => {
   return (
     <Router>
       <React.Suspense

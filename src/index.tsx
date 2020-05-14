@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Routing } from './core';
+import { App } from 'core';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routing />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
