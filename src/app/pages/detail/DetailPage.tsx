@@ -2,22 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const DetailPage = ({ dispatch }: any) => {
-  dispatch({
-    type: 'SALUDAR',
-    payload: {
-      content: 'Hola mundo'
-    }
-  });
+import { fetchMovies as fetchMoviesAction } from 'core/store/actions/movies';
+
+const DetailPage = ({ fetchMovies, title }: any) => {
+  fetchMovies();
+
+  debugger;
 
   return (
     <>
-      <p>detail</p>
+      <p>detail {title}</p>
       <Link to="/">Back Home</Link>
     </>
   );
 }
 
-const DetailPageConnected = connect(null, (dispatch: any) => ({ dispatch }))(DetailPage);
+const mapStateToProps = (state: any) => ({
+  title: state.movies.title,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  fetchMovies: () => dispatch(fetchMoviesAction())
+});
+
+const DetailPageConnected =
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(DetailPage);
 
 export default DetailPageConnected;
