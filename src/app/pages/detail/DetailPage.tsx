@@ -1,34 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { Link } from 'react-router-dom';
+// import { connect } from 'react-redux';
 
-import { fetchMovies as fetchMoviesAction } from 'core/store/actions/movies';
+// // import { fetchMovies as fetchMoviesAction } from 'core/store/actions/films';
 
-const DetailPage = ({ fetchMovies, title }: any) => {
-  fetchMovies();
+// const DetailPage = ({ fetchMovies, title }: any) => {
+//   fetchMovies();
 
-  debugger;
+//   debugger;
 
-  return (
-    <>
-      <p>detail {title}</p>
-      <Link to="/">Back Home</Link>
-    </>
-  );
-}
+//   return (
+//     <>
+//       <p>detail {title}</p>
+//       <Link to="/">Back Home</Link>
+//     </>
+//   );
+// }
 
-const mapStateToProps = (state: any) => ({
-  title: state.movies.title,
-});
+// const mapStateToProps = (state: any) => ({
+//   title: state.movies.title,
+// });
 
-const mapDispatchToProps = (dispatch: any) => ({
-  fetchMovies: () => dispatch(fetchMoviesAction())
-});
+// const mapDispatchToProps = (dispatch: any) => ({
+//   fetchMovies: () => dispatch(fetchMoviesAction())
+// });
 
-const DetailPageConnected =
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DetailPage);
+// const DetailPageConnected =
+//   connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+//   )(DetailPage);
 
-export default DetailPageConnected;
+// export default DetailPageConnected;
+export default () => <></>;

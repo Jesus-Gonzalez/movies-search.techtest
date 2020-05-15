@@ -1,7 +1,5 @@
-import moviesSaga from './movies';
-// import historySaga from './history';
+import moviesSaga from './films';
 
 export default function* RootSaga() {
   yield moviesSaga();
-  // historySaga();
 }
