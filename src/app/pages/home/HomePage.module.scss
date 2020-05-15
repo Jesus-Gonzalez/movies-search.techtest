@@ -1,0 +1,29 @@
+@import 'styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  h1 {
+    text-align: center;
+    margin: 0;
+    margin-bottom: 25px;
+  }
+
+  .link {
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .content {
+    width: 55%;
+    padding: 5%;
+    background-color: $background-grey;
+  }
+}

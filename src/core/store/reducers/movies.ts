@@ -1,5 +1,5 @@
 const initialState = {
-  title: 'Barry',
+  inputSearch: '',
 };
 
 export default (state = initialState, action: any) => {
