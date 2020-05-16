@@ -28,7 +28,6 @@ const SearchForm = (props: any) => {
         className={styles.form}
         onSubmit={handleSubmitForm}
       >
-        <h2>Search Form</h2>
         <div className={styles.suggestionsWrapper}>
           <div className={styles.inputButton}>
             <input

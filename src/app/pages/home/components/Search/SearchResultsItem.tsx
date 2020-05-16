@@ -1,37 +1,54 @@
 import React from 'react';
-import { connect } from 'react-redux';
+
+import styles from './SearchResultsItem.module.scss';
 
 interface IProps {
-  filteredFilms: IFilm[];
-  submitted: boolean;
+  film: IFilm;
+  handleGotoDetail: (film: IFilm) => void;
 }
 
-const SearchResults = (props: IProps) => {
-  const { filteredFilms, submitted } = props;
+const SearchResultsItem = (props: IProps) => {
+  const { film, handleGotoDetail } = props;
 
-  if (!submitted) return null;
-
-  if (!filteredFilms || !filteredFilms.length) {
-    return <p>No results</p>;
-  }
+  const description = film.opening_crawl
+    .replace(/[\r\n]/g, '')
+    .replace(/[\.]/g, '. ')
+    .substr(0, 123)
+    .concat('...');
 
   return (
-    <div>
-      {filteredFilms.map((film: IFilm) => <p key={film.episode_id}>{film.title}</p>)}
+    <div
+      className={styles.wrapper}
+      onClick={() => handleGotoDetail(film)}
+    >
+      <img
+        className={styles.image}
+        src="https://source.unsplash.com/random/150x150"
+        alt={`${film.title} logo`}
+      />
+      <div className={styles.details}>
+        <header className={styles.header}>
+          <h3 className={styles.title}>{film.title}</h3>
+          <div className={styles.info}>
+            <span className={styles.date}>{film.release_date.substr(0, 4)}</span>
+            <span className={styles.separator}>-</span>
+            <span className={styles.director}>{film.director}</span>
+          </div>
+        </header>
+
+        <p className={styles.description}>
+          {description}
+        </p>
+
+        <button
+          type="button"
+          className={styles.gotoDetails}
+        >
+          Go to details
+        </button>
+      </div>
     </div>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  filteredFilms: state.films.filteredFilms,
-  submitted: state.films.submitted,
-});
-
-// const mapDispatchToProps = (dispatch: any) => ({
-//   buildFilm: (filmId: number) => compose(dispatch, buildFilm)(filmId),
-// });
-
-// const SearchFormConnected = connect(mapStateToProps, mapDispatchToProps)(SearchForm);
-const SearchResultsConnected = connect(mapStateToProps)(SearchResults);
-
-export default SearchResultsConnected;
+export default SearchResultsItem;
