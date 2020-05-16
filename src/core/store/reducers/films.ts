@@ -5,6 +5,7 @@ export interface IFilmsReducerState {
   films: IFilm[];
   filteredFilms: IFilm[];
   loading: string | boolean;
+  shouldDisplaySuggestions: boolean;
   submitted: boolean;
 }
 
@@ -13,6 +14,7 @@ const initialState: IFilmsReducerState = {
   films: [],
   filteredFilms: [],
   loading: false,
+  shouldDisplaySuggestions: false,
   submitted: false,
 };
 
@@ -42,18 +44,34 @@ export default (state = initialState, action: any) => {
     case 'FILTER_FILMS':
       const regexp = new RegExp(escapeRegex(action.term.toLowerCase()));
 
+      const filteredFilms = state.films
+        .filter(film => regexp.test(film.title.toLowerCase()));
+
       return Object.assign(
         {},
         state,
         {
           submitted: false,
-          filteredFilms: state.films
-            .filter(film => regexp.test(film.title.toLowerCase())),
+          filteredFilms,
+          shouldDisplaySuggestions: !!filteredFilms.length,
         }
       );
 
+    case 'TOGGLE_SUGGESTIONS':
+        return Object.assign(
+          {},
+          state,
+          { shouldDisplaySuggestions: !state.shouldDisplaySuggestions }
+        );
+
     case 'SUBMIT_FILMS':
-      return Object.assign({}, state, { submitted: true });
+      return Object.assign(
+        {},
+        state,
+        {
+          submitted: true,
+          shouldDisplaySuggestions: false,
+        });
 
     default:
       return state;

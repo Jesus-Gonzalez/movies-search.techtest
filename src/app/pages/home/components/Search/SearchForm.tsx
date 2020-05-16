@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { filterFilms, handleSubmit } from 'core/store/actions/films';
 
-import Suggestions from '../Suggestions/SuggestionsBox';
+import Suggestions from '../Suggestions/Suggestions';
 
 import useSearchForm from './SearchForm.hook';
 import styles from './SearchForm.module.scss';
@@ -17,7 +17,10 @@ const SearchForm = (props: any) => {
     inputRef,
   } = useSearchForm(props);
 
-  const shouldDisplaySuggestions = false;
+  const {
+    filteredFilms,
+    shouldDisplaySuggestions,
+  } = props;
 
   return (
     <section className={styles.wrapper}>
@@ -26,32 +29,38 @@ const SearchForm = (props: any) => {
         onSubmit={handleSubmitForm}
       >
         <h2>Search Form</h2>
-        <div className={styles.inputButton}>
-          <input
-            ref={inputRef}
-            className={styles.input}
-            type="text"
-            placeholder="Search movie"
-            value={inputSearchValue}
-            onChange={handleChangeInputSearch}
-          />
+        <div className={styles.suggestionsWrapper}>
+          <div className={styles.inputButton}>
+            <input
+              ref={inputRef}
+              className={styles.input}
+              type="text"
+              placeholder="Search movie"
+              value={inputSearchValue}
+              onChange={handleChangeInputSearch}
+            />
 
-          <button
-            className={styles.button}
-            type="submit"
-          >
-            Search
-          </button>
+            <button
+              className={styles.button}
+              type="submit"
+            >
+              Search
+            </button>
+          </div>
+
+          {shouldDisplaySuggestions && (
+          <Suggestions filteredFilms={filteredFilms} />
+        )}
         </div>
-
-        {shouldDisplaySuggestions && <Suggestions />}
       </form>
     </section>
   );
 };
 
 const mapStateToProps = (state: any) => ({
-  films: state.films.films
+  films: state.films.films,
+  filteredFilms: state.films.filteredFilms,
+  shouldDisplaySuggestions: state.films.shouldDisplaySuggestions,
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
