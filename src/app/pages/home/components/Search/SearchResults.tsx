@@ -5,14 +5,17 @@ import { SearchResultsItem } from './__components';
 
 import useSearchResults from './SearchResults.hook';
 import styles from './SearchResults.module.scss';
+import { compose } from 'redux';
+import { setLoading } from 'core/store/actions/films';
 
 interface IProps {
   filteredFilms: IFilm[];
+  setLoading: (loading: boolean) => void;
   submitted: boolean;
 }
 
 const SearchResults = (props: IProps) => {
-  const { handleGotoDetail } = useSearchResults();
+  const { handleGotoDetail } = useSearchResults(props);
 
   const { filteredFilms, submitted } = props;
 
@@ -43,6 +46,10 @@ const mapStateToProps = (state: any) => ({
   submitted: state.films.submitted,
 });
 
-const SearchResultsConnected = connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = (dispatch: any) => ({
+  setLoading: compose(dispatch, setLoading),
+});
+
+const SearchResultsConnected = connect(mapStateToProps, mapDispatchToProps)(SearchResults);
 
 export default SearchResultsConnected;

@@ -2,13 +2,19 @@ import React from 'react';
 
 import styles from './Suggestions.module.scss';
 
-const SuggestionsItem = (props: any) => {
-  const { film } = props;
+interface IProps {
+  handleClickSuggestion: (film: IFilm) => void;
+  film: IFilm;
+}
 
-  console.log('@suggestionitem.film', film)
+const SuggestionsItem = (props: IProps) => {
+  const { film, handleClickSuggestion } = props;
 
   return (
-    <li className={styles.item}>
+    <li
+      onClick={() => handleClickSuggestion(film)}
+      className={styles.item}
+    >
       {film.title}
     </li>
   );

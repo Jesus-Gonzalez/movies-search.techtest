@@ -103,7 +103,13 @@ export default (state = initialState, action: any) => {
           error: true,
         });
 
-
+    case 'SET_LOADING':
+      return Object.assign(
+        {},
+        state,
+        {
+          loading: action.loading,
+        });
 
     default:
       return state;

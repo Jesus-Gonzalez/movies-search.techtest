@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { getFilm } from 'core/store/actions/films';
-import { Loading } from 'app/components';
+import { LoadingPage } from 'app/pages/loading';
 
 import useFilmPage from './FilmPage.hook';
 import styles from './FilmPage.module.scss';
@@ -20,7 +20,7 @@ export function FilmPage(props: IProps) {
   const { film, loading } = props;
 
   if (loading) {
-    return <Loading />;
+    return <LoadingPage />;
   }
 
   return (

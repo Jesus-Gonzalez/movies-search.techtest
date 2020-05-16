@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 
-import { Loading } from 'app/components';
+import { LoadingPage } from 'app/pages/loading';
 import { Search } from './components'
 
 import styles from './HomePage.module.scss';
@@ -20,7 +20,7 @@ export function HomePage(props: IProps) {
   useHomePage(props);
 
   if (props.loading) {
-    return <Loading />;
+    return <LoadingPage />;
   }
 
   return (

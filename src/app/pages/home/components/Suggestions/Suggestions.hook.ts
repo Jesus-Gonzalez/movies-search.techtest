@@ -1,17 +1,29 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 interface IHook {
+  handleClickSuggestion: (film: IFilm) => void;
   suggestions: IFilm[];
   viewMore: number;
 }
 
 interface IHookConfiguration {
   filteredFilms: IFilm[];
+  setLoading: (loading: boolean) => void;
   toggleSuggestions: () => void;
 }
 
 export default function useSuggestions(configuration: IHookConfiguration): IHook {
-  const { filteredFilms, toggleSuggestions } = configuration;
+  const history = useHistory();
+
+  const { filteredFilms, setLoading, toggleSuggestions } = configuration;
+
+  const handleClickSuggestion = React.useCallback((film: IFilm) => {
+    setLoading(true);
+    const frags = film.url.split('/');
+    const idIndex = frags.length - 2;
+    history.push(`/film/${frags[idIndex]}`);
+  }, [history, setLoading]);
 
   React.useEffect(() => {
     const handlePressEscapeKey = (event: KeyboardEvent) => {
@@ -31,6 +43,7 @@ export default function useSuggestions(configuration: IHookConfiguration): IHook
   const viewMore = filteredFilms.length - 3;
 
   return {
+    handleClickSuggestion,
     suggestions,
     viewMore,
   };

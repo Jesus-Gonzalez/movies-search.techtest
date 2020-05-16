@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import {
+  setLoading,
   toggleSuggestions,
 } from 'core/store/actions/films';
 
@@ -14,6 +15,7 @@ import styles from './Suggestions.module.scss';
 interface IProps {
   filteredFilms: IFilm[];
   handleSubmit: (event: React.FormEvent<Element>) => void;
+  setLoading: (loading: boolean) => void;
   toggleSuggestions: () => void;
 }
 
@@ -23,6 +25,7 @@ const Suggestions = (props: IProps) => {
   const {
     suggestions,
     viewMore,
+    handleClickSuggestion,
   } = useSuggestions(props);
 
   if (suggestions.length === 0) {
@@ -35,6 +38,7 @@ const Suggestions = (props: IProps) => {
         suggestions.map((suggestion: IFilm) => (
           <SuggestionsItem
             key={suggestion.episode_id}
+            handleClickSuggestion={handleClickSuggestion}
             film={suggestion}
           />
         ))
@@ -56,6 +60,7 @@ const Suggestions = (props: IProps) => {
 
 const mapDispatchToProps = (dispatch: any) => ({
   toggleSuggestions: compose(dispatch, toggleSuggestions),
+  setLoading: compose(dispatch, setLoading),
 });
 
 const SuggestionsConnected = connect(null, mapDispatchToProps)(Suggestions);

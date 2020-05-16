@@ -1,7 +1,16 @@
 import React from 'react';
 
-export default function LoadingPage() {
+import styles from './LoadingPage.module.scss';
+import Spinner from 'app/components/Spinner/Spinner';
+
+function LoadingPage() {
   return (
-    <p>loading...</p>
+    <div className={styles.wrapper}>
+      <div id="loading-page" className={styles.content}>
+        <Spinner />
+      </div>
+    </div>
   );
 }
+
+export default LoadingPage;
