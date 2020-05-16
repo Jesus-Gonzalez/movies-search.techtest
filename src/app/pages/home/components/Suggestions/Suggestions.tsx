@@ -3,9 +3,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import {
-  handleSubmit as handleSubmitAction,
   toggleSuggestions,
-} from 'core/store/actions/films'
+} from 'core/store/actions/films';
 
 import SuggestionsItem from './SuggestionsItem';
 
@@ -14,7 +13,7 @@ import styles from './Suggestions.module.scss';
 
 interface IProps {
   filteredFilms: IFilm[];
-  handleSubmit: () => void;
+  handleSubmit: (event: React.FormEvent<Element>) => void;
   toggleSuggestions: () => void;
 }
 
@@ -56,7 +55,6 @@ const Suggestions = (props: IProps) => {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  handleSubmit: compose(dispatch, handleSubmitAction),
   toggleSuggestions: compose(dispatch, toggleSuggestions),
 });
 

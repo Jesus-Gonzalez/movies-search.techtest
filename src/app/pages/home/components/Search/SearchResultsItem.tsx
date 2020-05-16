@@ -12,7 +12,7 @@ const SearchResultsItem = (props: IProps) => {
 
   const description = film.opening_crawl
     .replace(/[\r\n]/g, '')
-    .replace(/[\.]/g, '. ')
+    .replace(/[.]/g, '. ')
     .substr(0, 123)
     .concat('...');
 

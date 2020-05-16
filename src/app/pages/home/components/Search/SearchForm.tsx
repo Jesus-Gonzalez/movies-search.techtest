@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { filterFilms, handleSubmit } from 'core/store/actions/films';
 
-import Suggestions from '../Suggestions/Suggestions';
+import { Suggestions } from '../Suggestions';
 
 import useSearchForm from './SearchForm.hook';
 import styles from './SearchForm.module.scss';
@@ -48,7 +48,10 @@ const SearchForm = (props: any) => {
           </div>
 
           {shouldDisplaySuggestions && (
-          <Suggestions filteredFilms={filteredFilms} />
+            <Suggestions
+              filteredFilms={filteredFilms}
+              handleSubmit={handleSubmitForm}
+            />
         )}
         </div>
       </form>
