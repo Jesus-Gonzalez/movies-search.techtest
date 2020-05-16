@@ -2,7 +2,10 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
-import { toggleSuggestions } from 'core/store/actions/films'
+import {
+  handleSubmit as handleSubmitAction,
+  toggleSuggestions,
+} from 'core/store/actions/films'
 
 import SuggestionsItem from './SuggestionsItem';
 
@@ -11,31 +14,49 @@ import styles from './Suggestions.module.scss';
 
 interface IProps {
   filteredFilms: IFilm[];
+  handleSubmit: () => void;
   toggleSuggestions: () => void;
 }
 
 const Suggestions = (props: IProps) => {
-  useSuggestions(props);
+  const { handleSubmit } = props;
 
-  const { filteredFilms } = props;
+  const {
+    suggestions,
+    viewMore,
+  } = useSuggestions(props);
+
+  if (suggestions.length === 0) {
+    return null;
+  }
 
   return (
     <ul className={styles.wrapper}>
       {
-      filteredFilms.length === 0
-        ? <li>No results</li>
-        : filteredFilms.map((film: IFilm) =>
-            <SuggestionsItem
-              key={film.episode_id}
-              film={film}
-            />
-          )
+        suggestions.map((suggestion: IFilm) => (
+          <SuggestionsItem
+            key={suggestion.episode_id}
+            film={suggestion}
+          />
+        ))
+      }
+
+      {
+        viewMore > 0 && (
+          <li
+            className={styles.item}
+            onClick={handleSubmit}
+          >
+            {viewMore} more results
+          </li>
+        )
       }
     </ul>
   );
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
+  handleSubmit: compose(dispatch, handleSubmitAction),
   toggleSuggestions: compose(dispatch, toggleSuggestions),
 });
 
