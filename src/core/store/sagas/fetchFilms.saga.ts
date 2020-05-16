@@ -11,6 +11,6 @@ function* fetchFilms() {
   }
 }
 
-export default function* FilmsSaga() {
+export default function* FetchFilmsSaga() {
   yield takeLatest('FETCH_FILMS', fetchFilms);
 }

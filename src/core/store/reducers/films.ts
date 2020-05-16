@@ -2,6 +2,7 @@ import { escapeRegex } from "core/utils";
 
 export interface IFilmsReducerState {
   error: boolean;
+  film: IFilm;
   films: IFilm[];
   filteredFilms: IFilm[];
   loading: string | boolean;
@@ -11,9 +12,10 @@ export interface IFilmsReducerState {
 
 const initialState: IFilmsReducerState = {
   error: false,
+  film: {} as IFilm,
   films: [],
   filteredFilms: [],
-  loading: false,
+  loading: true,
   shouldDisplaySuggestions: false,
   submitted: false,
 };
@@ -72,6 +74,36 @@ export default (state = initialState, action: any) => {
           submitted: true,
           shouldDisplaySuggestions: false,
         });
+
+    case 'GET_FILM':
+      return Object.assign(
+        {},
+        state,
+        {
+          loading: true,
+          error: false,
+          film: {},
+        });
+
+    case 'GET_FILM_SUCCESS':
+      return Object.assign(
+        {},
+        state,
+        {
+          loading: false,
+          film: action.film,
+        });
+
+    case 'GET_FILM_ERROR':
+      return Object.assign(
+        {},
+        state,
+        {
+          loading: false,
+          error: true,
+        });
+
+
 
     default:
       return state;
