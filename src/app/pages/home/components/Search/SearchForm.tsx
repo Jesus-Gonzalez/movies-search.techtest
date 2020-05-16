@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { filterFilms, handleSubmit } from 'core/store/actions/films';
 
@@ -45,6 +46,13 @@ const SearchForm = (props: any) => {
             >
               Search
             </button>
+
+            <Link
+              className={styles.linkButton}
+              to="/history"
+            >
+              History
+            </Link>
           </div>
 
           {shouldDisplaySuggestions && (

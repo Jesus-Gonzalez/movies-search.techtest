@@ -26,6 +26,7 @@ const SearchResultsItem = (props: IProps) => {
         src="https://source.unsplash.com/random/150x150"
         alt={`${film.title} logo`}
       />
+
       <div className={styles.details}>
         <header className={styles.header}>
           <h3 className={styles.title}>{film.title}</h3>

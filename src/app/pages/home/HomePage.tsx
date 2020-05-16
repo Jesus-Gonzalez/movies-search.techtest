@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { Link } from 'react-router-dom';
 
 import { LoadingPage } from 'app/pages/loading';
 import { Search } from './components'
@@ -26,14 +25,6 @@ export function HomePage(props: IProps) {
   return (
     <div className={styles.wrapper}>
         <div className={styles.content}>
-          <nav>
-            <Link
-              className={styles.link}
-              to="/history"
-            >
-              History
-            </Link>
-          </nav>
           <h1>Star Wars Wiki</h1>
           <Search />
         </div>
