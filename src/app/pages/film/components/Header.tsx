@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.scss'
 
 const Header = () => (
-  <nav>
+  <nav className={styles.wrapper}>
     <Link
       to="/search"
       className={styles.link}
