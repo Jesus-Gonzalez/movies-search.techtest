@@ -1,4 +1,6 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const getFilm = (filmId: string) => ({
-  type: 'GET_FILM',
+  type: ActionTypes.Films.GetFilm,
   filmId,
 });

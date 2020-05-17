@@ -1,4 +1,6 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const remove = (film: IFilmObject) => ({
-  type: 'HISTORY_REMOVE',
+  type: ActionTypes.History.Remove,
   film,
 });

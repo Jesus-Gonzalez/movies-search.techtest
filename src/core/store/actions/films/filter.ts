@@ -1,4 +1,6 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const filterFilms = (term: string) => ({
-  type: 'FILTER_FILMS',
+  type: ActionTypes.Films.FilterFilms,
   term,
 })

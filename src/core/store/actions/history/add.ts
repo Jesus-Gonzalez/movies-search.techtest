@@ -1,4 +1,6 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const addToHistory = (film: IFilmObject) => ({
-  type: 'HISTORY_ADD',
+  type: ActionTypes.History.Add,
   film,
 });

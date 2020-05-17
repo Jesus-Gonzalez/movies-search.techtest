@@ -1,3 +1,5 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 import { escapeRegex } from "core/utils";
 
 export interface IFilmsReducerState {
@@ -22,28 +24,28 @@ const initialState: IFilmsReducerState = {
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    case 'FETCH_FILMS':
+    case ActionTypes.Films.Fetch:
       return Object.assign(
         {},
         state,
         { loading: true, filteredFilms: [] }
       );
 
-    case 'FETCH_FILMS_SUCCESS':
+    case ActionTypes.Films.FetchSuccess:
       return Object.assign(
         {},
         state,
         { loading: false, films: action.films.results }
       );
 
-    case 'FETCH_FILMS_ERROR':
+    case ActionTypes.Films.FetchError:
       return Object.assign(
         {},
         state,
         { loading: false, error: true }
       );
 
-    case 'FILTER_FILMS':
+    case ActionTypes.Films.FilterFilms:
       const regexp = new RegExp(escapeRegex(action.term.toLowerCase()));
 
       const filteredFilms = state.films
@@ -59,14 +61,14 @@ export default (state = initialState, action: any) => {
         }
       );
 
-    case 'TOGGLE_SUGGESTIONS':
+    case ActionTypes.Films.ToggleSuggestions:
         return Object.assign(
           {},
           state,
           { shouldDisplaySuggestions: !state.shouldDisplaySuggestions }
         );
 
-    case 'SUBMIT_FILMS':
+    case ActionTypes.Films.Submit:
       return Object.assign(
         {},
         state,
@@ -75,7 +77,7 @@ export default (state = initialState, action: any) => {
           shouldDisplaySuggestions: false,
         });
 
-    case 'GET_FILM':
+    case ActionTypes.Films.GetFilm:
       return Object.assign(
         {},
         state,
@@ -85,7 +87,7 @@ export default (state = initialState, action: any) => {
           film: {},
         });
 
-    case 'GET_FILM_SUCCESS':
+    case ActionTypes.Films.GetFilmSuccess:
       return Object.assign(
         {},
         state,
@@ -94,7 +96,7 @@ export default (state = initialState, action: any) => {
           film: action.film,
         });
 
-    case 'GET_FILM_ERROR':
+    case ActionTypes.Films.GetFilmError:
       return Object.assign(
         {},
         state,
@@ -103,7 +105,7 @@ export default (state = initialState, action: any) => {
           error: true,
         });
 
-    case 'SET_LOADING':
+    case ActionTypes.Films.SetLoading:
       return Object.assign(
         {},
         state,
@@ -111,7 +113,7 @@ export default (state = initialState, action: any) => {
           loading: action.loading,
         });
 
-    case 'HOME_RESET':
+    case ActionTypes.Films.Reset:
       return Object.assign(
         {},
         state,

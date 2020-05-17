@@ -1,3 +1,5 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export interface IHistoryReducerState {
   items: IFilmObject[];
 }
@@ -9,14 +11,14 @@ const initialState: IHistoryReducerState = {
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    case 'HISTORY_ADD':
+    case ActionTypes.History.Add:
       return Object.assign(
         {},
         state,
         { items: state.items.concat(action.film) }
       );
 
-    case 'HISTORY_REMOVE':
+    case ActionTypes.History.Remove:
       const index = state.items.findIndex(film => film.url === action.film.url);
       const nextItems = Object.assign([], state.items);
       nextItems.splice(index, 1);
@@ -27,7 +29,7 @@ export default (state = initialState, action: any) => {
         { items: nextItems }
       );
 
-    case 'HISTORY_CLEAR':
+    case ActionTypes.History.Clear:
       return Object.assign(
         {},
         state,

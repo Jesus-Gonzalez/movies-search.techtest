@@ -1,3 +1,5 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export interface IHistoryReducerState {
   error: boolean;
   items: ICharacter[];
@@ -12,7 +14,7 @@ const initialState: IHistoryReducerState = {
 
 export default (state = initialState, action: any) => {
   switch (action.type) {
-    case 'FETCH_CHARACTERS':
+    case ActionTypes.Characters.Fetch:
       return Object.assign(
         {},
         state,
@@ -23,7 +25,7 @@ export default (state = initialState, action: any) => {
         }
       );
 
-    case 'FETCH_CHARACTERS_SUCCESS':
+    case ActionTypes.Characters.FetchSuccess:
       return Object.assign(
         {},
         state,
@@ -33,7 +35,7 @@ export default (state = initialState, action: any) => {
         }
       );
 
-    case 'FETCH_CHARACTERS_ERROR':
+      case ActionTypes.Characters.FetchError:
       return Object.assign(
         {},
         state,

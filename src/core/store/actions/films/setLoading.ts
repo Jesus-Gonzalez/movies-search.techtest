@@ -1,4 +1,6 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const setLoading = (loading: boolean) => ({
-  type: 'SET_LOADING',
+  type: ActionTypes.Films.SetLoading,
   loading,
 });

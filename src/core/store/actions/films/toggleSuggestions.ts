@@ -1,3 +1,5 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const toggleSuggestions = () => ({
-  type: 'TOGGLE_SUGGESTIONS'
+  type: ActionTypes.Films.ToggleSuggestions,
 });

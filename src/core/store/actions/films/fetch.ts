@@ -1,3 +1,5 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const fetchFilms = () => ({
-  type: 'FETCH_FILMS'
+  type: ActionTypes.Films.Fetch
 });

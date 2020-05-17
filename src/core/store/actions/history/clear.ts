@@ -1,3 +1,5 @@
+import * as ActionTypes from 'core/store/actionTypes';
+
 export const clear = () => ({
-  type: 'HISTORY_CLEAR',
+  type: ActionTypes.History.Clear,
 });
