@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import * as Api from 'app/api'
 
-function* fetchFilms() {
+export function* fetchFilms() {
   try {
     const films = yield call(Api.fetchFilms);
     yield put({ type: 'FETCH_FILMS_SUCCESS', films });

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import { RawSpinner as Spinner } from '../Spinner';
 
-it('render routes', () => {
+it('renders', () => {
   expect(renderer.create(<Spinner />))
     .toMatchSnapshot();
 });
