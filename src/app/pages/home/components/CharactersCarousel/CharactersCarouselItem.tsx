@@ -13,6 +13,13 @@ const SuggestionsItem = (props: IProps) => {
     <li
       className={styles.item}
     >
+      <div className={styles.avatarWrapper}>
+        <img
+          className={styles.avatarImage}
+          src="https://source.unsplash.com/random/125x125"
+          alt={"logo"}
+        />
+      </div>
       <strong className={styles.name}>{character.name}</strong>
       <span>
         <strong>Height: </strong>
