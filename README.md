@@ -14,6 +14,7 @@ A very simple Star Wars movie directory.
 - axios
 - sass
 - swapi.dev (api/resources)
+- jest & react-test-renderer
 
 ## Pages
 
@@ -22,3 +23,15 @@ The website is divided in 3 pages:
 - Home (search page)
 - Detail (item page)
 - History (items accessed page)
+
+## Testing
+
+The application is not fully covered and only a few components' been tested:
+
+- root
+- presentational component `Spinner`
+- redux
+  - action creator
+  - action types
+  - reducers
+  - sagas
