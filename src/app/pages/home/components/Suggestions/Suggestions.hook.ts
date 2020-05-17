@@ -39,8 +39,9 @@ export default function useSuggestions(configuration: IHookConfiguration): IHook
     }
   });
 
-  const suggestions = filteredFilms.slice(0, 3);
-  const viewMore = filteredFilms.length - 3;
+  const maxSuggestions = 3;
+  const suggestions = filteredFilms.slice(0, maxSuggestions);
+  const viewMore = filteredFilms.length - maxSuggestions;
 
   return {
     handleClickSuggestion,

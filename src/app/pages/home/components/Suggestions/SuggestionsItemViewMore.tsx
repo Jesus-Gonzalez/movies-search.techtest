@@ -7,7 +7,7 @@ import { Props } from './Suggestions';
 const SuggestionsItem = (props: Props) => {
   const { viewMore, handleSubmit } = props;
 
-  if (viewMore < 0) return null;
+  if (viewMore < 1) return null;
 
   return (
     <li
