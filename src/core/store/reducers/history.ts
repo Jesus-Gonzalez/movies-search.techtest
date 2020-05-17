@@ -4,9 +4,8 @@ export interface IHistoryReducerState {
   items: IFilmObject[];
 }
 
-const history = JSON.parse(localStorage.getItem('history.items') || '[]');
 const initialState: IHistoryReducerState = {
-  items: history,
+  items: [],
 };
 
 export default (state = initialState, action: any) => {
