@@ -1,0 +1,61 @@
+$border: 1px solid #d9d9d9;
+$buttonColor: #f0f0f0;
+
+.wrapper {
+  max-width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #fafafa;
+  border: $border;
+
+  &:hover {
+    background-color: $buttonColor;
+  }
+
+  .header {
+    margin-top: 12px;
+    padding-top: 12px;
+
+    .separator {
+      margin: 0 5px;
+    }
+
+    .title {
+      margin: 0;
+      margin-bottom: 5px;
+      font-size: 22px;
+    }
+  }
+
+  .gotoDetails, .remove {
+    padding: 5px;
+    background: white;
+    border: 1px solid black;
+  }
+
+  .remove {
+    margin-left: 10px;
+  }
+
+  .imageWrapper, .description {
+    margin: 0;
+    padding: 10px;
+  }
+
+}
+
+.wrapper,
+.header,
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 540px) {
+  .wrapper {
+    flex-direction: row;
+  }
+}

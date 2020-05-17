@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`creates the action 1`] = `
+Object {
+  "Fetch": "FETCH_CHARACTERS",
+  "FetchError": "FETCH_CHARACTERS_ERROR",
+  "FetchSuccess": "FETCH_CHARACTERS_SUCCESS",
+}
+`;

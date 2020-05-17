@@ -1,0 +1,44 @@
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.suggestionsWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.inputButton {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .button,
+  .linkButton,
+  .input,
+  .input:focus {
+    padding: 7px;
+    margin-left: 5px;
+    color: #000;
+    background: #fff;
+    border: 1px solid darkgray;
+    outline: none;
+    text-decoration: none;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .input {
+    width: 100%;
+    height: 20px;
+  }
+
+  .button {
+    margin-left: 5px;
+    cursor: pointer;
+  }
+}

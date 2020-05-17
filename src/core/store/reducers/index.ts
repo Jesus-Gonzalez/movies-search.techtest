@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
+import characters from './characters';
+import films from './films';
 import history from './history';
-import movies from './movies';
 
 export default combineReducers({
+  characters,
+  films,
   history,
-  movies,
 });

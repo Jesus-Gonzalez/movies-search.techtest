@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`processes actions with a processing label 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "id": 123,
+      "name": "hello world",
+      "url": "a",
+    },
+  ],
+}
+`;
+
+exports[`processes actions with a processing label 2`] = `
+Object {
+  "items": Array [
+    Object {
+      "id": 123,
+      "name": "hello world",
+      "url": "a",
+    },
+    Object {
+      "id": 321,
+      "name": "hello world",
+      "url": "b",
+    },
+  ],
+}
+`;
+
+exports[`processes actions with a processing label 3`] = `
+Object {
+  "items": Array [
+    Object {
+      "id": 321,
+      "name": "hello world",
+      "url": "b",
+    },
+  ],
+}
+`;
+
+exports[`processes actions with a processing label 4`] = `
+Object {
+  "items": Array [],
+}
+`;

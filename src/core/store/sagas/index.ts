@@ -1,7 +1,13 @@
-import moviesSaga from './movies';
-// import historySaga from './history';
+import { all } from 'redux-saga/effects';
+
+import watchFetchCharacters from './fetchCharacters.saga';
+import watchFetchFilms from './fetchFilms.saga';
+import watchGetFilm from './getFilm.saga';
 
 export default function* RootSaga() {
-  yield moviesSaga();
-  // historySaga();
+  yield all([
+    watchFetchCharacters(),
+    watchFetchFilms(),
+    watchGetFilm(),
+  ]);
 }

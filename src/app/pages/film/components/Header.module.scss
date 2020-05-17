@@ -1,0 +1,11 @@
+.wrapper {
+  .link {
+    color: #000;
+    text-decoration: none;
+    margin-right: 7px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

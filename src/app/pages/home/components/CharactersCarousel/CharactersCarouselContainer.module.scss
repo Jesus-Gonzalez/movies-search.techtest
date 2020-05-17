@@ -1,0 +1,45 @@
+@import 'styles/variables.scss';
+
+.scroll {
+  display: grid;
+
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    overflow-x: auto;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .item {
+      flex: 0 0 auto;
+      display: flex;
+      flex-direction: column;
+      min-width: 150px;
+      max-width: 150px;
+
+      .avatarWrapper {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .name {
+        font-size: 18px;
+        margin-bottom: 5px;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.divider {
+  margin: 25px 0;
+}

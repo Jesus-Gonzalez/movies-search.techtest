@@ -1,0 +1,59 @@
+@import 'styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+
+  .content {
+    width: 100%;
+    margin: 4%;
+    padding: 4%;
+    background-color: $background-grey;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .objects {
+    display: flex;
+    flex-direction: column;
+
+    .object {
+      padding-bottom: 15px;
+      border-bottom: $border;
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      h3 {
+        text-decoration: underline;
+      }
+
+      .objectWrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .objectItem {
+          width: 170px;
+          padding: 5px;
+          margin: 5px;
+          background: $almost-white;
+          border: $border;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 745px) {
+  .content {
+    max-width: 700px;
+  }
+}
