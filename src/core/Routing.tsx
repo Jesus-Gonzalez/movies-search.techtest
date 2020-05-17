@@ -5,6 +5,7 @@ import LoadingPage from '../app/pages/loading/LoadingPage';
 
 const HomePage = React.lazy(() => import('../app/pages/home/HomePage'));
 const FilmPage = React.lazy(() => import('../app/pages/film/FilmPage'));
+const HistoryPage = React.lazy(() => import('../app/pages/history/HistoryPage'));
 
 export const Routing = () => {
   return (
@@ -13,6 +14,7 @@ export const Routing = () => {
         fallback={<LoadingPage />}
       >
         <Switch>
+          <Route exact path="/history" component={HistoryPage} />
           <Route exact path="/search" component={HomePage} />
           <Route exact path="/film/:filmId" component={FilmPage} />
           <Route render={() => <Redirect to="/search" />} />
