@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles from './Spinner.module.scss';
 
-export default React.memo(
-  function Spinner() {
-    return (
-      <span className={styles.ldsDualRing} />
-    )
-  }
-)
+export function RawSpinner() {
+  return (
+    <span className={styles.ldsDualRing} />
+  )
+}
+
+export default React.memo(RawSpinner);
