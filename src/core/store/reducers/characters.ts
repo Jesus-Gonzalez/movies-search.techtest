@@ -1,9 +1,13 @@
 export interface IHistoryReducerState {
+  error: boolean;
   items: ICharacter[];
+  loading: boolean;
 }
 
 const initialState: IHistoryReducerState = {
+  loading: false,
   items: [],
+  error: false
 };
 
 export default (state = initialState, action: any) => {
