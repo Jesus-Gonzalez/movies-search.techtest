@@ -1,11 +1,12 @@
 import React from 'react';
 
 import styles from './HistoryListItem.module.scss';
+import { formatOpeningCrawl } from 'core/utils';
 
 interface IProps {
-  film: IFilm;
-  handleGotoDetail: (film: IFilm) => void;
-  remove: (film: IFilm) => void;
+  film: IFilmObject;
+  handleGotoDetail: (film: IFilmObject) => void;
+  remove: (film: IFilmObject) => void;
 }
 
 const HistoryListItem = (props: IProps) => {
@@ -15,20 +16,18 @@ const HistoryListItem = (props: IProps) => {
     remove
   } = props;
 
-  const description = film.opening_crawl
-    .replace(/[\r\n]/g, '')
-    .replace(/[.]/g, '. ')
-    .substr(0, 123)
-    .concat('...');
+  const description = formatOpeningCrawl(film.opening_crawl);
+
+  const handleRemove = (event: React.FormEvent) => {
+    event.stopPropagation();
+    remove(film);
+  };
 
   return (
     <div
       className={styles.wrapper}
       onClick={() => handleGotoDetail(film)}
     >
-      <div className={styles.remove}>
-        <button onClick={() => remove(film)}>remove</button>
-      </div>
       <img
         className={styles.image}
         src="https://source.unsplash.com/random/150x150"
@@ -39,8 +38,6 @@ const HistoryListItem = (props: IProps) => {
         <header className={styles.header}>
           <h3 className={styles.title}>{film.title}</h3>
           <div className={styles.info}>
-            <span className={styles.date}>{film.release_date.substr(0, 4)}</span>
-            <span className={styles.separator}>-</span>
             <span className={styles.director}>{film.director}</span>
           </div>
         </header>
@@ -49,12 +46,21 @@ const HistoryListItem = (props: IProps) => {
           {description}
         </p>
 
-        <button
-          type="button"
-          className={styles.gotoDetails}
-        >
-          Go to details
-        </button>
+        <div className={styles.actions}>
+          <button
+            type="button"
+            className={styles.gotoDetails}
+          >
+            Go to details
+          </button>
+          <button
+            className={styles.remove}
+            type="button"
+            onClick={handleRemove}
+          >
+            Remove
+          </button>
+        </div>
       </div>
     </div>
   );

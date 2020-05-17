@@ -1,4 +1,4 @@
-export const remove = (film: IFilm) => ({
+export const remove = (film: IFilmObject) => ({
   type: 'HISTORY_REMOVE',
   film,
 });

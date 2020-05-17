@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { formatOpeningCrawl } from 'core/utils';
+
 import styles from './SearchResultsItem.module.scss';
 
 interface IProps {
@@ -10,11 +12,7 @@ interface IProps {
 const SearchResultsItem = (props: IProps) => {
   const { film, handleGotoDetail } = props;
 
-  const description = film.opening_crawl
-    .replace(/[\r\n]/g, '')
-    .replace(/[.]/g, '. ')
-    .substr(0, 123)
-    .concat('...');
+  const description = formatOpeningCrawl(film.opening_crawl);
 
   return (
     <div

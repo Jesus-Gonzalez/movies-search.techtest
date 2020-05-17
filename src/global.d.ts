@@ -81,4 +81,5 @@ interface IFilmObject {
   "starships": IStarship[];
   "vehicles": IVehicle[];
   "species": ISpecies[];
+  "url": string;
 }

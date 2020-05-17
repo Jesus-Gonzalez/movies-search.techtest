@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {
+  Header,
   Information,
   Characters,
   Planets,
@@ -22,6 +23,7 @@ export default function
     return (
       <div className={styles.wrapper}>
         <div className={styles.content}>
+          <Header />
           <h1 className={styles.title}>{film.title}</h1>
           <Information film={film} />
           <h2>Objects</h2>

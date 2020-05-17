@@ -2,20 +2,24 @@ import React from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
+import { setLoading } from 'core/store/actions/films';
 import { clear, remove } from 'core/store/actions/history';
 
 import { HistoryList } from './__components';
-import { IHook } from './HistoryListContainer.hook';
+import useHistoryList, { IHook } from './HistoryListContainer.hook';
 
 interface IPropsConnect {
-  films: IFilm[];
-  remove: (film: IFilm) => void;
+  films: IFilmObject[];
   clear: () => void;
+  remove: (film: IFilmObject) => void;
+  setLoading: (loading: boolean) => void;
 }
 
 export type IProps = IPropsConnect & IHook;
 
 const HistoryListContainer = (props: IProps) => {
+  const hook = useHistoryList(props);
+
   const { films } = props;
 
   if (!films || !films.length) {
@@ -25,6 +29,7 @@ const HistoryListContainer = (props: IProps) => {
   return (
     <HistoryList
       {...props}
+      {...hook}
     />
   );
 };
@@ -34,8 +39,9 @@ const mapStateToProps = (state: any) => ({
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
-  remove: compose(dispatch, remove),
   clear: compose(dispatch, clear),
+  remove: compose(dispatch, remove),
+  setLoading: compose(dispatch, setLoading),
 });
 
 const HistoryListContainerConnected = connect(mapStateToProps, mapDispatchToProps)(HistoryListContainer);

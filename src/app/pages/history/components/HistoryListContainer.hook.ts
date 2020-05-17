@@ -6,7 +6,7 @@ export interface IHookConfiguration {
 }
 
 export interface IHook {
-  handleGotoDetail: (film: IFilm) => void;
+  handleGotoDetail: (film: IFilmObject) => void;
 }
 
 export default function
@@ -15,7 +15,7 @@ export default function
 
     const history = useHistory();
 
-    const handleGotoDetail = React.useCallback((film: IFilm) => {
+    const handleGotoDetail = React.useCallback((film: IFilmObject) => {
       setLoading(true);
       const frags = film.url.split('/');
       const idIndex = frags.length - 2;

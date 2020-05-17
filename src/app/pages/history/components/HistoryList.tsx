@@ -7,16 +7,22 @@ import styles from './HistoryList.module.scss';
 import { IProps } from './HistoryListContainer';
 
 const HistoryList = (props: IProps) => {
-  const { films } = props;
+  const { clear, films } = props;
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.clear}>
-        <button className={styles.clear}>Clear</button>
-      </div>
+      <header className={styles.clearWrapper}>
+        <button
+          type="button"
+          className={styles.clear}
+          onClick={clear}
+        >
+          Clear
+        </button>
+      </header>
 
       {films
-        .map((film: IFilm) => (
+        .map((film: IFilmObject) => (
           <HistoryListItem
             key={film.episode_id}
             film={film}

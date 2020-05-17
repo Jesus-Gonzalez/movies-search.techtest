@@ -30,10 +30,14 @@ $buttonColor: #f0f0f0;
     }
   }
 
-  .gotoDetails {
+  .gotoDetails, .remove {
     padding: 5px;
     background: white;
     border: 1px solid black;
+  }
+
+  .remove {
+    margin-left: 10px;
   }
 
   .imageWrapper, .description {

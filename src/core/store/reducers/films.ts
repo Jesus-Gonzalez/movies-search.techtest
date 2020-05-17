@@ -111,6 +111,13 @@ export default (state = initialState, action: any) => {
           loading: action.loading,
         });
 
+    case 'HOME_RESET':
+      return Object.assign(
+        {},
+        state,
+        initialState
+      )
+
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 export interface IHistoryReducerState {
-  items: IFilm[];
+  items: IFilmObject[];
 }
 
 const history = JSON.parse(localStorage.getItem('history.items') || '[]');
@@ -18,7 +18,7 @@ export default (state = initialState, action: any) => {
 
     case 'HISTORY_REMOVE':
       const index = state.items.findIndex(film => film.url === action.film.url);
-      const nextItems = Object.assign({}, state.items);
+      const nextItems = Object.assign([], state.items);
       nextItems.splice(index, 1);
 
       return Object.assign(
