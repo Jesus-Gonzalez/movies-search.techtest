@@ -1,24 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { filterFilms, handleSubmit } from 'core/store/actions/films';
+import { SuggestionsContainer } from '../__components';
 
-import { Suggestions } from '../Suggestions';
-
-import useSearchForm from './SearchForm.hook';
 import styles from './SearchForm.module.scss';
-import { compose } from 'redux';
 
-const SearchForm = (props: any) => {
+import { IProps } from './SearchFormContainer';
+import { IHook } from './SearchForm.hook';
+
+type Props = IHook & IProps;
+
+const SearchForm = (props: Props) => {
   const {
     handleChangeInputSearch,
     handleSubmitForm,
     inputSearchValue,
     inputRef,
-  } = useSearchForm(props);
-
-  const {
     filteredFilms,
     shouldDisplaySuggestions,
   } = props;
@@ -56,7 +53,7 @@ const SearchForm = (props: any) => {
           </div>
 
           {shouldDisplaySuggestions && (
-            <Suggestions
+            <SuggestionsContainer
               filteredFilms={filteredFilms}
               handleSubmit={handleSubmitForm}
             />
@@ -67,17 +64,4 @@ const SearchForm = (props: any) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  films: state.films.films,
-  filteredFilms: state.films.filteredFilms,
-  shouldDisplaySuggestions: state.films.shouldDisplaySuggestions,
-});
-
-const mapDispatchToProps = (dispatch: any) => ({
-  filterFilms: compose(dispatch, filterFilms),
-  handleSubmit: compose(dispatch, handleSubmit),
-});
-
-const SearchFormConnected = connect(mapStateToProps, mapDispatchToProps)(SearchForm);
-
-export default SearchFormConnected;
+export default SearchForm;

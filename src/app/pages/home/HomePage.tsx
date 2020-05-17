@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import { LoadingPage } from 'app/pages/loading';
-import { Search } from './components'
+import { Layout } from './components'
 
-import styles from './HomePage.module.scss';
 import useHomePage from './HomePage.hook';
 import { fetchFilms } from 'core/store/actions/films';
 
@@ -23,12 +22,7 @@ export function HomePage(props: IProps) {
   }
 
   return (
-    <div className={styles.wrapper}>
-        <div className={styles.content}>
-          <h1>Star Wars Wiki</h1>
-          <Search />
-        </div>
-      </div>
+    <Layout />
   );
 }
 

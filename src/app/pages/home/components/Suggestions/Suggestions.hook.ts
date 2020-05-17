@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-interface IHook {
+export interface IHook {
   handleClickSuggestion: (film: IFilm) => void;
   suggestions: IFilm[];
   viewMore: number;

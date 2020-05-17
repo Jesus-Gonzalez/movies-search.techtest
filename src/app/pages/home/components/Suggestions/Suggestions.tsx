@@ -1,68 +1,27 @@
 import React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
 
 import {
-  setLoading,
-  toggleSuggestions,
-} from 'core/store/actions/films';
+  SuggestionsList,
+  SuggestionsItemViewMore,
+} from './__components';
 
-import SuggestionsItem from './SuggestionsItem';
+import { IHook } from './Suggestions.hook';
+import { IProps } from './SuggestionsContainer';
 
-import useSuggestions from './Suggestions.hook';
 import styles from './Suggestions.module.scss';
 
-interface IProps {
-  filteredFilms: IFilm[];
-  handleSubmit: (event: React.FormEvent<Element>) => void;
-  setLoading: (loading: boolean) => void;
-  toggleSuggestions: () => void;
-}
+export type Props = IHook & IProps;
 
-const Suggestions = (props: IProps) => {
-  const { handleSubmit } = props;
+const Suggestions = (props: Props) => (
+  <ul className={styles.wrapper}>
+    <SuggestionsList
+      {...props}
+    />
 
-  const {
-    suggestions,
-    viewMore,
-    handleClickSuggestion,
-  } = useSuggestions(props);
+    <SuggestionsItemViewMore
+      {...props}
+    />
+  </ul>
+);
 
-  if (suggestions.length === 0) {
-    return null;
-  }
-
-  return (
-    <ul className={styles.wrapper}>
-      {
-        suggestions.map((suggestion: IFilm) => (
-          <SuggestionsItem
-            key={suggestion.episode_id}
-            handleClickSuggestion={handleClickSuggestion}
-            film={suggestion}
-          />
-        ))
-      }
-
-      {
-        viewMore > 0 && (
-          <li
-            className={styles.item}
-            onClick={handleSubmit}
-          >
-            {viewMore} more results
-          </li>
-        )
-      }
-    </ul>
-  );
-}
-
-const mapDispatchToProps = (dispatch: any) => ({
-  toggleSuggestions: compose(dispatch, toggleSuggestions),
-  setLoading: compose(dispatch, setLoading),
-});
-
-const SuggestionsConnected = connect(null, mapDispatchToProps)(Suggestions);
-
-export default SuggestionsConnected;
+export default Suggestions;

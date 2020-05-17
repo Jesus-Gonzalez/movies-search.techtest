@@ -1,17 +1,17 @@
 import React from 'react';
 
 import {
-  SearchForm,
-  SearchResults,
+  SearchFormContainer,
+  SearchResultsContainer,
 } from './__components';
 
 import styles from './SearchForm.module.scss';
 
-export default function FilmsSearch () {
+export default function Search () {
   return (
     <section className={styles.wrapper}>
-      <SearchForm />
-      <SearchResults />
+      <SearchFormContainer />
+      <SearchResultsContainer />
     </section>
   );
 };
